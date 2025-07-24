@@ -1,0 +1,34 @@
+cookie:
+  expiry_days: 7
+  key: some_secure_key_123
+  name: balance_app
+credentials:
+  usernames:
+    analyst1:
+      email: analyst1@example.com
+      name: Analyst One
+      password: $2b$12$LlePFm4KX.MRbM5ZfAomS.mRxzpH6KOyDX3dewSSFPYv.tITWXEnK
+      role: analyst
+    ceo_jio:
+      company: Jio Platforms
+      email: ceo@jioplatforms.com
+      name: CEO Jio
+      password: $2b$12$zplxrJbPNNFGqN0Ip5.Jy.Uy58q4KEJ.IvoWDBfnLvGRK6mIVXjV6
+      role: ceo
+    ceo_retail:
+      company: Reliance Retail Ventures
+      email: ceo@relianceretail.com
+      name: CEO Retail
+      password: $2b$12$FwoVhKzOrHwQph6wr3NnB.VU6men7AwQP02mc3B6Y9WlLTtnm/tnK
+      role: ceo
+    group_head:
+      email: ambani@reliance.com
+      name: Mukesh Ambani
+      password: $2b$12$fEFzQF9spXlGAEZ8sQNC5uNo5Y.HU9GFne46QGP7k0FEu3c67Ubfq
+      role: owner
+    inventory_mgr:
+      company: Reliance Industries
+      email: inventory@ril.com
+      name: Inventory Manager
+      password: $2b$12$C8jymq7gHoX3dQi6WOyOGOTDcvY4OsA0HTh6xtKNSn/CW3/k4W0vS
+      role: inventory_manager
