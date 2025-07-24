@@ -6,14 +6,12 @@ from pathlib import Path
 import sys
 import pandas as pd
 
-# Add src to path
-sys.path.append(str(Path(__file__).parent / "src"))
 
 # Import modules
-from pdf_parser import extract_text_from_pdf, save_to_vector_db, chat_with_context
-from chat_over_vector_db import find_relevant_chunks
-from display import render_chunk_as_table_or_text, markdown_to_df
-from viz import plot_trend_chart
+from src.pdf_parser import extract_text_from_pdf, save_to_vector_db, chat_with_context
+from src.chat_over_vector_db import find_relevant_chunks
+from src.display import render_chunk_as_table_or_text, markdown_to_df
+from src.viz import plot_trend_chart
 
 # ---- Load config.yaml ----
 with open('config.yaml') as file:
@@ -191,7 +189,11 @@ elif st.session_state.get("authentication_status"):
                 else:
                     context_chunks = find_relevant_chunks(role_query, role=role)
                 context_text = "\n\n".join(context_chunks) if context_chunks else "No relevant context found."
-                answer = chat_with_context(role_query, context_text)
+                try:
+                    answer = chat_with_context(role_query, context_text)
+                except Exception as e:
+                    st.error(f"Chatbot API error: {e}")
+                    answer = "Sorry, the assistant is temporarily unavailable."
                 st.markdown(answer)
 
         # Save assistant message
