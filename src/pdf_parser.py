@@ -87,7 +87,9 @@ def save_to_vector_db(text, metadata=None):
             f.write(json.dumps(doc) + "\n")
 
     # Rebuild FAISS
-    embedder = SentenceTransformer("all-MiniLM-L6-v2")
+    embedder = SentenceTransformer("./model_cache/all-MiniLM-L6-v2", device="cpu")
+    print("Model loaded successfully")
+
     vectors = embedder.encode([d["content"] for d in all_docs])
     index = faiss.IndexFlatL2(vectors.shape[1])
     index.add(np.array(vectors).astype("float32"))

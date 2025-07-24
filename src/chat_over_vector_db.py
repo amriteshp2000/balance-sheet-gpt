@@ -18,7 +18,9 @@ def find_relevant_chunks(query, role, company=None, k=5):
     if not docs: return []
 
     corpus = [d["content"] for d in docs]
-    embedder = SentenceTransformer("all-MiniLM-L6-v2")
+    embedder = SentenceTransformer('./model_cache/all-MiniLM-L6-v2', device='cpu')
+    print("Model loaded successfully")
+
     vectors = embedder.encode(corpus)
 
     index = faiss.IndexFlatL2(vectors.shape[1])
