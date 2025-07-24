@@ -32,7 +32,7 @@ def extract_text_from_pdf(uploaded_file):
     )
 
     response = client.chat.complete(
-        model="mistral-large-latest",
+        model="mistral-medium-latest",
         messages=[
             {
                 "role": "user",
@@ -102,7 +102,7 @@ def save_to_vector_db(text, metadata=None):
 def chat_with_context(query, context_text):
     client = Mistral(api_key=st.secrets["MISTRAL_API_KEY"])
     response = client.chat.complete(
-        model="mistral-large-latest",
+        model="mistral-medium-latest",
         messages=[
             {"role": "system", "content": "You are a helpful financial assistant. Use only the context provided."},
             {"role": "user", "content": f"Context:\n{context_text[:8000]}"},
