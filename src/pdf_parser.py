@@ -3,6 +3,7 @@ from mistralai import Mistral
 import tempfile, uuid, os, re, json
 from sentence_transformers import SentenceTransformer
 import numpy as np, faiss
+import streamlit
 
 
 def extract_text_from_pdf(uploaded_file):
@@ -11,7 +12,7 @@ def extract_text_from_pdf(uploaded_file):
     with open(temp_path, "wb") as f:
         f.write(uploaded_file.read())
 
-    client = Mistral(api_key=os.getenv("MISTRAL_API_KEY"))
+    client = Mistral(api_key=streamlit.secrets["MISTRAL_API_KEY"])
 
     with open(temp_path, "rb") as f:
         file_upload = client.files.upload(
@@ -97,7 +98,7 @@ def save_to_vector_db(text, metadata=None):
 
 
 def chat_with_context(query, context_text):
-    client = Mistral(api_key=os.environ["MISTRAL_API_KEY"])
+    client = Mistral(api_key=streamlit.secrets["MISTRAL_API_KEY"])
     response = client.chat.complete(
         model="mistral-large-latest",
         messages=[
