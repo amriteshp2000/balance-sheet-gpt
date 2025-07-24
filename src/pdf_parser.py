@@ -32,7 +32,7 @@ def extract_text_from_pdf(uploaded_file):
     )
 
     response = client.chat.complete(
-        model="mistral-8b-latest",
+        model="ministral-8b-latest",
         messages=[
             {
                 "role": "user",
