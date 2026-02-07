@@ -1,0 +1,430 @@
+<!-- frontend/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- ===================================================================
+         META TAGS
+         =================================================================== -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    <!-- Primary Meta Tags -->
+    <title>FinBot - AI-Powered Financial Analysis Dashboard</title>
+    <meta name="title" content="FinBot - AI-Powered Financial Analysis Dashboard" />
+    <meta name="description" content="Analyze balance sheets, financial statements, and make data-driven decisions with AI-powered insights. Upload PDFs, chat with your data, and get instant financial analysis." />
+    <meta name="keywords" content="financial analysis, AI, balance sheet, financial dashboard, PDF analysis, fintech, financial AI, data analysis" />
+    <meta name="author" content="FinBot Team" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1e40af" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light dark" />
+    
+    <!-- Mobile App Meta Tags -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="FinBot" />
+    <meta name="application-name" content="FinBot" />
+    
+    <!-- Microsoft Tile -->
+    <meta name="msapplication-TileColor" content="#2563eb" />
+    <meta name="msapplication-config" content="/browserconfig.xml" />
+    
+    <!-- ===================================================================
+         FAVICONS
+         =================================================================== -->
+    <!-- Standard Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png" />
+    
+    <!-- Android Icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
+    
+    <!-- Other Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    
+    <!-- ===================================================================
+         MANIFEST & PWA
+         =================================================================== -->
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- ===================================================================
+         OPEN GRAPH / FACEBOOK
+         =================================================================== -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://finbot.app/" />
+    <meta property="og:title" content="FinBot - AI-Powered Financial Analysis Dashboard" />
+    <meta property="og:description" content="Analyze balance sheets, financial statements, and make data-driven decisions with AI-powered insights." />
+    <meta property="og:image" content="https://finbot.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="FinBot Dashboard Preview" />
+    <meta property="og:site_name" content="FinBot" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- ===================================================================
+         TWITTER
+         =================================================================== -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://finbot.app/" />
+    <meta property="twitter:title" content="FinBot - AI-Powered Financial Analysis Dashboard" />
+    <meta property="twitter:description" content="Analyze balance sheets, financial statements, and make data-driven decisions with AI-powered insights." />
+    <meta property="twitter:image" content="https://finbot.app/twitter-image.png" />
+    <meta property="twitter:creator" content="@finbot" />
+
+    <!-- ===================================================================
+         PRECONNECT & PRELOAD
+         =================================================================== -->
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Preconnect to API (if known) -->
+    <link rel="preconnect" href="http://localhost:8000" />
+    
+    <!-- Preload Critical Fonts -->
+    <link 
+      rel="preload" 
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" 
+      as="style" 
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link 
+        rel="stylesheet" 
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      />
+    </noscript>
+
+    <!-- ===================================================================
+         DARK MODE INITIALIZATION (Prevents Flash)
+         =================================================================== -->
+    <script>
+      // Immediately set dark mode class before page renders to prevent flash
+      (function() {
+        try {
+          const savedTheme = localStorage.getItem('finbot_theme');
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          
+          if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {
+          // localStorage might not be available
+          console.warn('Could not access localStorage for theme preference');
+        }
+      })();
+    </script>
+
+    <!-- ===================================================================
+         CRITICAL CSS (Above the fold styles)
+         =================================================================== -->
+    <style>
+      /* Critical CSS for initial render */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      
+      html {
+        -webkit-text-size-adjust: 100%;
+        -webkit-tap-highlight-color: transparent;
+        scroll-behavior: smooth;
+      }
+      
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background-color: #ffffff;
+        color: #0f172a;
+        line-height: 1.5;
+      }
+      
+      /* Dark mode base styles */
+      html.dark body {
+        background-color: #020617;
+        color: #f8fafc;
+      }
+      
+      /* Loading screen styles */
+      #root {
+        min-height: 100vh;
+      }
+      
+      /* Initial loading indicator */
+      .initial-loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        z-index: 9999;
+        transition: opacity 0.3s ease-out;
+      }
+      
+      html.dark .initial-loader {
+        background: linear-gradient(135deg, #020617 0%, #0f172a 100%);
+      }
+      
+      .initial-loader.fade-out {
+        opacity: 0;
+        pointer-events: none;
+      }
+      
+      .loader-logo {
+        width: 64px;
+        height: 64px;
+        background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 24px;
+        animation: pulse-logo 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        box-shadow: 0 10px 40px rgba(59, 130, 246, 0.3);
+      }
+      
+      .loader-logo svg {
+        width: 32px;
+        height: 32px;
+        color: white;
+      }
+      
+      .loader-text {
+        font-size: 24px;
+        font-weight: 700;
+        background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 8px;
+      }
+      
+      .loader-subtext {
+        font-size: 14px;
+        color: #64748b;
+      }
+      
+      html.dark .loader-subtext {
+        color: #94a3b8;
+      }
+      
+      .loader-dots {
+        display: flex;
+        gap: 6px;
+        margin-top: 24px;
+      }
+      
+      .loader-dot {
+        width: 10px;
+        height: 10px;
+        background-color: #3b82f6;
+        border-radius: 50%;
+        animation: bounce-dot 1.4s ease-in-out infinite;
+      }
+      
+      .loader-dot:nth-child(2) {
+        animation-delay: 0.16s;
+      }
+      
+      .loader-dot:nth-child(3) {
+        animation-delay: 0.32s;
+      }
+      
+      @keyframes pulse-logo {
+        0%, 100% {
+          transform: scale(1);
+          box-shadow: 0 10px 40px rgba(59, 130, 246, 0.3);
+        }
+        50% {
+          transform: scale(1.05);
+          box-shadow: 0 15px 50px rgba(59, 130, 246, 0.4);
+        }
+      }
+      
+      @keyframes bounce-dot {
+        0%, 80%, 100% {
+          transform: scale(0.8);
+          opacity: 0.5;
+        }
+        40% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+      
+      /* Accessibility - Reduced Motion */
+      @media (prefers-reduced-motion: reduce) {
+        .loader-logo,
+        .loader-dot {
+          animation: none;
+        }
+      }
+      
+      /* Hide initial loader when React mounts */
+      #root:not(:empty) + .initial-loader,
+      #root:not(:empty) ~ .initial-loader {
+        display: none;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <!-- ===================================================================
+         REACT ROOT
+         =================================================================== -->
+    <div id="root"></div>
+    
+    <!-- ===================================================================
+         INITIAL LOADING SCREEN
+         (Shown before React hydrates)
+         =================================================================== -->
+    <div class="initial-loader" id="initial-loader">
+      <div class="loader-logo">
+        <!-- FinBot Logo SVG -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+          <polyline points="16 7 22 7 22 13"></polyline>
+        </svg>
+      </div>
+      <div class="loader-text">FinBot</div>
+      <div class="loader-subtext">AI-Powered Financial Analysis</div>
+      <div class="loader-dots">
+        <div class="loader-dot"></div>
+        <div class="loader-dot"></div>
+        <div class="loader-dot"></div>
+      </div>
+    </div>
+
+    <!-- ===================================================================
+         NOSCRIPT FALLBACK
+         =================================================================== -->
+    <noscript>
+      <div style="
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 20px;
+        font-family: system-ui, sans-serif;
+        text-align: center;
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      ">
+        <div style="
+          width: 64px;
+          height: 64px;
+          background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+          border-radius: 16px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 24px;
+          box-shadow: 0 10px 40px rgba(59, 130, 246, 0.3);
+        ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+            <polyline points="16 7 22 7 22 13"></polyline>
+          </svg>
+        </div>
+        <h1 style="
+          font-size: 24px;
+          font-weight: 700;
+          color: #1e40af;
+          margin: 0 0 8px 0;
+        ">FinBot</h1>
+        <p style="
+          font-size: 16px;
+          color: #475569;
+          margin: 0 0 24px 0;
+          max-width: 400px;
+        ">
+          JavaScript is required to run this application.
+        </p>
+        <p style="
+          font-size: 14px;
+          color: #64748b;
+          margin: 0;
+        ">
+          Please enable JavaScript in your browser settings and reload the page.
+        </p>
+      </div>
+    </noscript>
+
+    <!-- ===================================================================
+         MAIN SCRIPT (Vite will inject this)
+         =================================================================== -->
+    <script type="module" src="/src/main.jsx"></script>
+
+    <!-- ===================================================================
+         REMOVE LOADER SCRIPT
+         =================================================================== -->
+    <script>
+      // Remove initial loader once the app starts loading
+      window.addEventListener('DOMContentLoaded', function() {
+        // Give React a moment to start rendering
+        setTimeout(function() {
+          var loader = document.getElementById('initial-loader');
+          if (loader) {
+            loader.classList.add('fade-out');
+            setTimeout(function() {
+              if (loader.parentNode) {
+                loader.parentNode.removeChild(loader);
+              }
+            }, 300);
+          }
+        }, 100);
+      });
+      
+      // Fallback: remove loader after 5 seconds regardless
+      setTimeout(function() {
+        var loader = document.getElementById('initial-loader');
+        if (loader && loader.parentNode) {
+          loader.parentNode.removeChild(loader);
+        }
+      }, 5000);
+    </script>
+
+    <!-- ===================================================================
+         ERROR HANDLING SCRIPT
+         =================================================================== -->
+    <script>
+      // Global error handler for uncaught errors
+      window.onerror = function(message, source, lineno, colno, error) {
+        console.error('Global error:', { message, source, lineno, colno, error });
+        
+        // You could send this to an error tracking service
+        // sendToErrorTracking({ message, source, lineno, colno, error });
+        
+        return false;
+      };
+      
+      // Handle unhandled promise rejections
+      window.addEventListener('unhandledrejection', function(event) {
+        console.error('Unhandled promise rejection:', event.reason);
+        
+        // You could send this to an error tracking service
+        // sendToErrorTracking({ type: 'unhandledrejection', reason: event.reason });
+      });
+    </script>
+  </body>
+</html>

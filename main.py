@@ -8,7 +8,7 @@ import pandas as pd
 
 
 # Import modules
-from src.pdf_parser import extract_text_from_pdf, save_to_vector_db, chat_with_context
+from src.pdf_parser_v1 import extract_text_from_pdf, save_to_vector_db, chat_with_context
 from src.chat_over_vector_db import find_relevant_chunks
 from src.display import render_chunk_as_table_or_text, markdown_to_df
 from src.viz import plot_trend_chart
