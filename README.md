@@ -633,10 +633,10 @@ If you find this project useful, please consider giving it a star!
 
 ## 🔗 Links
 
-- [Live Demo](https://balance-sheet-gpt.vercel.app) (if deployed)
-- [Documentation](https://docs.balance-sheet-gpt.com) (if available)
-- [Blog Post](https://medium.com/@amritesh/building-balance-sheet-gpt) (if written)
-- [Video Tutorial](https://youtube.com/watch?v=...) (if created)
+- [Live Demo](https://balance-sheet-gpt.vercel.app)
+- [Documentation](https://docs.balance-sheet-gpt.com)
+- [Blog Post](https://medium.com/@amritesh/building-balance-sheet-gpt)
+- [Video Tutorial](https://youtube.com/watch?v=...)
 
 ---
 
