@@ -16,6 +16,7 @@ eval_type_backport==0.2.2
 extra-streamlit-components==0.1.80
 faiss-cpu==1.11.0.post1
 filelock==3.18.0
+fitz
 fsspec==2025.7.0
 gitdb==4.0.12
 GitPython==3.1.44
